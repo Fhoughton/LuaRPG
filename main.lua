@@ -1,17 +1,40 @@
-if arg[2] == "debug" then
-    require("lldebugger").start()
+require "debug"
+
+Object = require "classic"
+tick = require "tick"
+
+require "shape"
+require "rectangle"
+require "circle"
+
+function love.load()
+    listOfRectangles = {}
+
+    --tick.delay(function () drawRectangle = true end ,   2)
 end
 
-local love_errorhandler = love.errorhandler
+function love.keypressed(key)
+    if key == "space" then
+        table.insert(listOfRectangles, Rectangle(math.random(100), math.random(100), math.random(200), math.random(50)))
+    end
 
-function love.errorhandler(msg)
-    if lldebugger then
-        error(msg, 2)
-    else
-        return love_errorhandler(msg)
+    if key == "lshift" then
+        table.insert(listOfRectangles, Circle(math.random(100), math.random(200), math.random(50)))
+    end
+end
+
+function love.update(dt)
+    tick.update(dt)
+
+    if love.keyboard.isDown("right") then
+        for i,v in ipairs(listOfRectangles) do
+            v:update(dt)
+        end
     end
 end
 
 function love.draw()
-    love.graphics.print("Hello World!", 100, 100)
+    for i,v in ipairs(listOfRectangles) do
+        v:draw()
+    end
 end
