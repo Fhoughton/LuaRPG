@@ -1,0 +1,9 @@
+name = "HelloLove"
+default_targets = ["win32", "win64", "appimage"]
+build_directory = "bin"
+
+love_files = [
+    "::git-ls-tree::",
+    "+*",
+    "-*/.*",
+]
