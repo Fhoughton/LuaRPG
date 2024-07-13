@@ -6,11 +6,9 @@ function GameObject:new(x, y)
     self.image = love.graphics.newImage("/resources/sheep.png")
     self.x = x
     self.y = y
-    self.speed = 100
 end
 
-function GameObject:update(dt)
-    self.x = self.x + self.speed * dt
+function GameObject:update()
 end
 
 function GameObject:draw()
