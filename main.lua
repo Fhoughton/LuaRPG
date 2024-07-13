@@ -1,6 +1,6 @@
 require "debug"
 
-local state_shapes = require "states.shapes.state_shapes"
+local state_gameplay = require "states.gameplay.state_gameplay"
 
 Gamestate = require "lib.hump.gamestate"
 
@@ -9,5 +9,5 @@ function love.load()
     love.graphics.setDefaultFilter( "nearest", "nearest")
 
     Gamestate.registerEvents()
-    Gamestate.switch(state_shapes)
+    Gamestate.switch(state_gameplay)
 end
