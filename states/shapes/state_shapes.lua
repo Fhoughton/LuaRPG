@@ -1,9 +1,9 @@
 local state_shapes = {}
 
-local Rectangle = require "shapes.rectangle"
-local Circle = require "shapes.circle"
+local Rectangle = require "states.shapes.rectangle"
+local Circle = require "states.shapes.circle"
 
-local state_title = require "title.state_title"
+local state_title = require "states.title.state_title"
 
 local myImage = love.graphics.newImage("/resources/sheep.png")
 

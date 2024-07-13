@@ -1,4 +1,4 @@
-local Shape = require("shapes.shape")
+local Shape = require("states.shapes.shape")
 
 local Circle = Shape:extend()
 

@@ -1,8 +1,8 @@
 require "debug"
 
-local state_shapes = require "shapes.state_shapes"
+local state_shapes = require "states.shapes.state_shapes"
 
-Gamestate = require "hump.gamestate"
+Gamestate = require "lib.hump.gamestate"
 
 function love.load()
     love.graphics.setBackgroundColor(0, 0.4, 1)
