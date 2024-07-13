@@ -1,4 +1,6 @@
-Rectangle = Shape:extend()
+local Shape = require("shapes.shape")
+
+local Rectangle = Shape:extend()
 
 function Rectangle:new(x, y, width, height)
     Rectangle.super.new(self, x, y)
@@ -9,3 +11,5 @@ end
 function Rectangle:draw()
     love.graphics.rectangle("line", self.x, self.y, self.width, self.height)
 end
+
+return Rectangle
