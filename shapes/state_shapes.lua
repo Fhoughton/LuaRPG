@@ -3,6 +3,8 @@ local state_shapes = {}
 local Rectangle = require "shapes.rectangle"
 local Circle = require "shapes.circle"
 
+local state_title = require "title.state_title"
+
 local myImage = love.graphics.newImage("/resources/sheep.png")
 
 local listOfRectangles = {}
@@ -18,6 +20,10 @@ function state_shapes:keypressed(key)
 
     if key == "lshift" then
         table.insert(listOfRectangles, Circle(math.random(100), math.random(200), math.random(50)))
+    end
+
+    if key == "rshift" then
+        Gamestate.switch(state_title)
     end
 end
 
