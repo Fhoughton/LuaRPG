@@ -1,31 +1,40 @@
+local peachy = require("lib.peachy")
+
 local GameObject = require "states.gameplay.game_object"
 
 local Player = GameObject:extend()
 
 function Player:new(x, y)
-    self.image = love.graphics.newImage("/resources/sheep.png")
+    self.image = peachy.new("resources/man.json", love.graphics.newImage("resources/man.png"), "WalkDown")
     self.x = x
     self.y = y
     self.speed = 100
 end
 
-function Player:update(dt)
-    if love.keyboard.isDown("left") then
-        self.x = self.x - self.speed * dt
-    end
-    if love.keyboard.isDown("right") then
-        self.x = self.x + self.speed * dt
-    end
-    if love.keyboard.isDown("up") then
-        self.y = self.y - self.speed * dt
-    end
-    if love.keyboard.isDown("down") then
-        self.y = self.y + self.speed * dt
-    end
+function Player:draw()
+    self.image:draw(self.x, self.y)
 end
 
-function Player:draw()
-    love.graphics.draw(self.image, self.x, self.y, 0, 1, 1)
+
+function Player:update(dt)
+  self.image:update(dt)
+  self.image:play()
+
+  if love.keyboard.isDown("left") then
+    self.x = self.x - (self.speed * dt)
+    self.image:setTag("WalkLeft")
+  elseif love.keyboard.isDown("right") then
+    self.x = self.x + (self.speed * dt)
+    self.image:setTag("WalkRight")
+  elseif love.keyboard.isDown("up") then
+    self.y = self.y - (self.speed * dt)
+    self.image:setTag("WalkUp")
+  elseif love.keyboard.isDown("down") then
+    self.y = self.y + (self.speed * dt)
+    self.image:setTag("WalkDown")
+  else
+    self.image:pause()
+  end
 end
 
 return Player

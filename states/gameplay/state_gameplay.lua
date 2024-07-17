@@ -1,4 +1,5 @@
 GameObject = require "states.gameplay.game_object"
+Sheep = require "states.gameplay.sheep"
 Player = require "states.gameplay.player"
 Camera = require "lib.hump.camera"
 
@@ -12,6 +13,7 @@ local objects = {}
 
 function state_gameplay:enter()
     love.graphics.setBackgroundColor(0, 1, 0)
+    --table.insert(objects,Sheep(100, 100))
     table.insert(objects,Player(100, 100))
     camera = Camera(0, 0)
     map = sti("maps/map_test.lua")
