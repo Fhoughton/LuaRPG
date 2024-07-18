@@ -16,6 +16,7 @@ function state_gameplay:enter()
     --table.insert(objects,Sheep(100, 100))
     table.insert(objects,Player(100, 100))
     camera = Camera(0, 0)
+    camera:zoom(2)
     map = sti("maps/map_test.lua")
 end
 
@@ -40,7 +41,7 @@ function state_gameplay:draw()
     love.graphics.clear(1, 1, 1, 0)
 
     --print(camera.x)
-    map:draw(-camera.x, -camera.y)
+    map:draw(-camera.x, -camera.y, camera.scale, camera.scale)
     love.graphics.rectangle("fill", 100, 100, 300, 300)
 
     for i, obj in ipairs(objects) do
