@@ -14,9 +14,11 @@ local objects = {}
 function state_gameplay:enter()
     love.graphics.setBackgroundColor(0, 1, 0)
     --table.insert(objects,Sheep(100, 100))
-    table.insert(objects,Player(100, 100))
     camera = Camera(0, 0)
     camera:zoom(2)
+
+    table.insert(objects,Player(100, 100, camera))
+    
     map = sti("maps/map_test.lua")
 end
 
@@ -24,9 +26,6 @@ function state_gameplay:update(dt)
     map:update(dt)
     for i, obj in ipairs(objects) do
         obj:update(dt)
-
-        local middle = obj:getMiddle()
-        camera:lookAt(middle.x, middle.y)
     end
 end
 

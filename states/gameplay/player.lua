@@ -4,11 +4,12 @@ local GameObject = require "states.gameplay.game_object"
 
 local Player = GameObject:extend()
 
-function Player:new(x, y)
+function Player:new(x, y, camera)
     self.image = peachy.new("resources/man.json", love.graphics.newImage("resources/man.png"), "WalkDown")
     self.x = x
     self.y = y
     self.speed = 100
+    self.camera = camera
 end
 
 function Player:draw()
@@ -35,6 +36,9 @@ function Player:update(dt)
   else
     self.image:pause()
   end
+
+  local middle = self:getMiddle()
+  camera:lookAt(middle.x, middle.y)
 end
 
 return Player
