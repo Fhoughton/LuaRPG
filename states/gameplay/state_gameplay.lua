@@ -1,6 +1,7 @@
 GameObject = require "states.gameplay.game_object"
 Sheep = require "states.gameplay.sheep"
 Player = require "states.gameplay.player"
+Box = require "states.gameplay.box"
 Camera = require "lib.hump.camera"
 
 local sti = require "lib.sti"
@@ -13,14 +14,21 @@ local objects = {}
 
 function state_gameplay:enter()
     love.graphics.setBackgroundColor(0, 1, 0)
-    table.insert(objects,Sheep(100, 100))
     camera = Camera(0, 0)
     camera:zoom(2)
 
     table.insert(objects,Player(100, 100, camera))
     --table.insert(objects,Sheep(240, 200))
     
-    map = sti("maps/map_test.lua")
+    map = sti("maps/map_object_test.lua")
+
+    -- Load Map Objects
+    for i,v in ipairs(map.layers.Objects.objects) do
+        if v.name == "Box" then
+            table.insert(objects,Box(v.x, v.y))
+        end
+    end
+    map:removeLayer("Objects")
 end
 
 function state_gameplay:update(dt)

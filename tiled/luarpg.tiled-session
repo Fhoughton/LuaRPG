@@ -48,8 +48,8 @@
     "project": "luarpg.tiled-project",
     "property.type": "float",
     "recentFiles": [
-        "map_object_test.tmx",
         "outdoor_tileset.tsx",
+        "map_object_test.tmx",
         "map_test.tmx"
     ],
     "tileset.embedInMap": true,
