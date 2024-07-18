@@ -25,7 +25,8 @@ function state_gameplay:enter()
     -- Load Map Objects
     for i,v in ipairs(map.layers.Objects.objects) do
         if v.name == "Box" then
-            table.insert(objects,Box(v.x, v.y))
+            table.insert(objects,Box(v.x, v.y)) -- TODO: Tiled assumes it's at 0,0 but it's not so idk what to do zzz
+            -- table.insert(objects,Box(0, 0))
         end
     end
     map:removeLayer("Objects")

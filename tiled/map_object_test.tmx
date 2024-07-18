@@ -10,7 +10,7 @@
   <image source="../resources/tilesets/outdoor_tileset.png" width="640" height="288"/>
  </tileset>
  <objectgroup color="#c061cb" id="3" name="Objects">
-  <object id="14" name="Box" x="672" y="96" width="32" height="32"/>
+  <object id="14" name="Box" x="608" y="128" width="32" height="32"/>
  </objectgroup>
  <layer id="1" name="Tile Layer 1" width="30" height="20">
   <data encoding="csv">
