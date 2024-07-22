@@ -50,7 +50,9 @@ function state_gameplay:draw()
     love.graphics.setCanvas(camera_canvas)
     love.graphics.clear(1, 1, 1, 0)
 
-    map:drawLayer(map.layers["Tile Layer 1"])
+    for layerName, layerObject in pairs(map.layers) do
+        map:drawLayer(layerObject)
+    end
     
     for i, obj in ipairs(objects) do
         obj:draw()
