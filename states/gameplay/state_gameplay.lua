@@ -17,7 +17,7 @@ function state_gameplay:enter()
     camera = Camera(0, 0)
     camera:zoom(2)
 
-    table.insert(objects,Player(100, 100, camera))
+    table.insert(objects,Player(0, 0, camera))
     --table.insert(objects,Sheep(240, 200))
     
     map = sti("maps/map_object_test.lua")
@@ -26,6 +26,7 @@ function state_gameplay:enter()
     for i,v in ipairs(map.layers.Objects.objects) do
         if v.name == "Box" then
             table.insert(objects,Box(v.x, v.y)) -- TODO: Tiled assumes it's at 0,0 but it's not so idk what to do zzz
+            print(v.x, v.y)
             -- table.insert(objects,Box(0, 0))
         end
     end
@@ -49,8 +50,7 @@ function state_gameplay:draw()
     love.graphics.setCanvas(camera_canvas)
     love.graphics.clear(1, 1, 1, 0)
 
-    --print(camera.x)
-    map:draw(-camera.x, -camera.y, camera.scale, camera.scale)
+    map:drawLayer(map.layers["Tile Layer 1"])
     
     for i, obj in ipairs(objects) do
         obj:draw()
