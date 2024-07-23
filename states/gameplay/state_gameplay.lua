@@ -6,11 +6,15 @@ Camera = require "lib.hump.camera"
 
 local sti = require "lib.sti"
 
+local bump = require "lib.bump"
+
 local game_canvas = love.graphics.newCanvas(rs.get_game_size())
 
 local state_gameplay = {}
 
 local objects = {}
+
+collision_world = bump.newWorld()
 
 function state_gameplay:enter()
     love.graphics.setBackgroundColor(0, 1, 0)
@@ -25,7 +29,9 @@ function state_gameplay:enter()
     -- Load Map Objects
     for i,v in ipairs(map.layers.Objects.objects) do
         if v.name == "Box" then
-            table.insert(objects,Box(v.x, v.y)) -- TODO: Tiled assumes it's at 0,0 but it's not so idk what to do zzz
+            local newBox = Box(v.x, v.y)
+            table.insert(objects,newBox) -- TODO: Tiled assumes it's at 0,0 but it's not so idk what to do zzz
+            collision_world:add(newBox, v.x, v.y, 32, 32)
             print(v.x, v.y)
             -- table.insert(objects,Box(0, 0))
         end

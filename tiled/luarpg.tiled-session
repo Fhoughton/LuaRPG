@@ -3,17 +3,20 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "outdoor_tileset.tsx",
+    "activeFile": "map_object_test.tmx",
     "expandedProjectPaths": [
         "."
     ],
     "fileStates": {
+        "": {
+            "scaleInEditor": 1
+        },
         "map_object_test.tmx": {
             "scale": 2,
-            "selectedLayer": 1,
+            "selectedLayer": 0,
             "viewCenter": {
-                "x": 815.5,
-                "y": 79.5
+                "x": 651.5,
+                "y": 79
             }
         },
         "map_object_test.tmx#outdoor_tileset": {
