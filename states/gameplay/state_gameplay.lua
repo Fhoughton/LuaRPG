@@ -8,6 +8,8 @@ local sti = require "lib.sti"
 local bump = require "lib.bump"
 local console = require "states.gameplay.console"
 
+debug = require "states.gameplay.gameplay_debug"
+
 local game_canvas = love.graphics.newCanvas(rs.get_game_size())
 
 local state_gameplay = {}
@@ -63,13 +65,17 @@ function state_gameplay:draw()
     for i, obj in ipairs(objects) do
         obj:draw()
     end
+
+    debug.draw()
+    love.graphics.setColor(1,1,1,1)
+
     camera:detach()
 
-    console.draw()
-    love.graphics.setCanvas()
-    
+    -- Draw GUI Here
+    state_gameplay:drawGUI()
 
-    
+    -- Draw Screen Space After Here
+    love.graphics.setCanvas()    
 
     rs.push()
         -- Draw camera's canvas.
@@ -78,6 +84,10 @@ function state_gameplay:draw()
 
     -- Draw rectangle to see game zone.
     love.graphics.rectangle("line", rs.get_game_zone())
+end
+
+function state_gameplay:drawGUI()
+    console.draw()
 end
 
 function state_gameplay:keypressed(key)
