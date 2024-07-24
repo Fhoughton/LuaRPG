@@ -9,6 +9,19 @@ console.addCommand("drawFPS", function(args)
     debug.showFPS = not debug.showFPS
 end, "Should collisions be drawn? - Arguments: [true/false]")
 
+function file_exists(name)
+    local f=io.open(name,"r")
+    if f~=nil then io.close(f) return true else return false end
+ end 
+
+console.addCommand("map", function(args)
+    if args then
+        loadMap(args[1])
+    else
+        console.print("MAP NAME AT SOME POINT")
+    end
+end, "Should collisions be drawn? - Arguments: [true/false]")
+
 
 console.addCommand("hello", function(args)
     if args then

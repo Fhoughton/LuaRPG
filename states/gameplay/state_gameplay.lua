@@ -23,10 +23,15 @@ function state_gameplay:enter()
     camera = Camera(0, 0)
     camera:zoom(2)
 
+    loadMap("maps/map_object_test.lua")
+end
+
+function loadMap(mapPath)
+    objects = {}
+
     table.insert(objects,Player(0, 0, camera))
-    --table.insert(objects,Sheep(240, 200))
-    
-    map = sti("maps/map_object_test.lua")
+
+    map = sti(mapPath)
 
     -- Load Map Objects
     for i,v in ipairs(map.layers.Objects.objects) do
