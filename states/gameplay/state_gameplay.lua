@@ -5,8 +5,8 @@ Box = require "states.gameplay.box"
 Camera = require "lib.hump.camera"
 
 local sti = require "lib.sti"
-
 local bump = require "lib.bump"
+local console = require "lib.loveconsole"
 
 local game_canvas = love.graphics.newCanvas(rs.get_game_size())
 
@@ -63,8 +63,12 @@ function state_gameplay:draw()
     for i, obj in ipairs(objects) do
         obj:draw()
     end
-    love.graphics.setCanvas()
     camera:detach()
+
+    console.draw()
+    love.graphics.setCanvas()
+    
+
     
 
     rs.push()
@@ -74,6 +78,20 @@ function state_gameplay:draw()
 
     -- Draw rectangle to see game zone.
     love.graphics.rectangle("line", rs.get_game_zone())
+end
+
+function state_gameplay:keypressed(key)
+    console.keypressed(key)
+end
+
+function state_gameplay:textinput(t)
+    if t ~= "`" then
+        console.textinput(t)
+    end
+end
+
+function state_gameplay:resize(w, h)
+    console.resize(w, h)
 end
 
 return state_gameplay
