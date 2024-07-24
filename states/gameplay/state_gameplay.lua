@@ -6,7 +6,7 @@ Camera = require "lib.hump.camera"
 
 local sti = require "lib.sti"
 local bump = require "lib.bump"
-local console = require "lib.loveconsole"
+local console = require "states.gameplay.console"
 
 local game_canvas = love.graphics.newCanvas(rs.get_game_size())
 
