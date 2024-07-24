@@ -1,6 +1,7 @@
 local debug = {}
 
 debug.shouldDrawCollisions = false
+debug.showFPS = false
 
 function debug.drawCollisions()
     -- Debug draw collisions
@@ -19,6 +20,12 @@ end
 
 function debug.draw()
     debug.drawCollisions()
+end
+
+function debug.drawGUI()
+    if debug.showFPS then
+        love.graphics.print(("FPS: %d"):format(love.timer.getFPS()), 0, 0)
+    end
 end
 
 return debug

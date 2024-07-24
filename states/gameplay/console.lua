@@ -2,17 +2,11 @@
 local console = require "lib.loveconsole"
 
 console.addCommand("drawCollisions", function(args)
-    if args then
-        if args[1] == "true" then
-            debug.shouldDrawCollisions = true
-        elseif args[1] == "false" then
-            debug.shouldDrawCollisions = false
-        else
-            console.error("Invalid argument to drawCollisions")
-        end
-    else
-        debug.shouldDrawCollisions = not debug.shouldDrawCollisions
-    end
+    debug.shouldDrawCollisions = not debug.shouldDrawCollisions
+end, "Should collisions be drawn? - Arguments: [true/false]")
+
+console.addCommand("drawFPS", function(args)
+    debug.showFPS = not debug.showFPS
 end, "Should collisions be drawn? - Arguments: [true/false]")
 
 

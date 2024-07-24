@@ -88,6 +88,7 @@ end
 
 function state_gameplay:drawGUI()
     console.draw()
+    debug.drawGUI()
 end
 
 function state_gameplay:keypressed(key)
