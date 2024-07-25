@@ -23,11 +23,13 @@ function state_gameplay:enter()
     camera = Camera(0, 0)
     camera:zoom(2)
 
-    loadMap("maps/map_object_test.lua")
+    loadMap("map_object_test")
 end
 
 function loadMap(mapPath)
+    mapPath = "maps/" .. mapPath .. ".lua"
     objects = {}
+    collision_world = bump.newWorld()
 
     table.insert(objects,Player(0, 0, camera))
 
