@@ -17,6 +17,7 @@ local state_gameplay = {}
 local objects = {}
 
 collision_world = bump.newWorld()
+event_world = bump.newWorld()
 
 function state_gameplay:enter()
     love.graphics.setBackgroundColor(0, 1, 0)
@@ -30,6 +31,7 @@ function loadMap(mapPath)
     mapPath = "maps/" .. mapPath .. ".lua"
     objects = {}
     collision_world = bump.newWorld()
+    event_world = bump.newWorld()
 
     table.insert(objects,Player(0, 0, camera))
 

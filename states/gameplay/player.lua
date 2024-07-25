@@ -15,6 +15,7 @@ function Player:new(x, y, camera)
     self.camera = camera
 
     collision_world:add(self, self.x, self.y, 16, 24)
+    event_world:add(self, self.x, self.y, 16, 24)
 end
 
 function Player:draw()
@@ -52,6 +53,9 @@ function Player:update(dt)
 
   self.x = actualX
   self.y = actualY
+
+  -- Make the event world hitbox track the collision one
+  event_world:update(self, actualX, actualY)
 
   -- Camera follows the player's new position
   local middle = self:getMiddle()
