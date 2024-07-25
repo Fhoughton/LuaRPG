@@ -34,16 +34,18 @@ function loadMap(mapPath)
     map = sti(mapPath)
 
     -- Load Map Objects
-    for i,v in ipairs(map.layers.Objects.objects) do
-        if v.name == "Box" then
-            local newBox = Box(v.x, v.y)
-            table.insert(objects,newBox) -- TODO: Tiled assumes it's at 0,0 but it's not so idk what to do zzz
-            collision_world:add(newBox, v.x, v.y, 32, 32)
-            print(v.x, v.y)
-            -- table.insert(objects,Box(0, 0))
+    if map.layers["Objects"] ~= nil then
+        for i,v in ipairs(map.layers.Objects.objects) do
+            if v.name == "Box" then
+                local newBox = Box(v.x, v.y)
+                table.insert(objects,newBox) -- TODO: Tiled assumes it's at 0,0 but it's not so idk what to do zzz
+                collision_world:add(newBox, v.x, v.y, 32, 32)
+                print(v.x, v.y)
+                -- table.insert(objects,Box(0, 0))
+            end
         end
+        map:removeLayer("Objects")
     end
-    map:removeLayer("Objects")
 end
 
 function state_gameplay:update(dt)
