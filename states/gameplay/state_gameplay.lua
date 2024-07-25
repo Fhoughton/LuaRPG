@@ -45,6 +45,8 @@ function loadMap(mapPath)
             end
         end
         map:removeLayer("Objects")
+    else
+        console.warning(("Map %s has no 'Objects' layer! Perhaps it's misnamed?"):format(mapPath))
     end
 end
 
