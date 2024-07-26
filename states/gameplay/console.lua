@@ -3,11 +3,25 @@ local console = require "lib.loveconsole"
 
 console.addCommand("drawCollisions", function(args)
     debug.shouldDrawCollisions = not debug.shouldDrawCollisions
-end, "Should collisions be drawn? - Arguments: [true/false]")
+end, "Should collision hitboxes be drawn?]")
+
+console.addCommand("drawEvents", function(args)
+    debug.shouldDrawEvents = not debug.shouldDrawEvents
+end, "Should event debug info be drawn?")
+
 
 console.addCommand("drawFPS", function(args)
     debug.showFPS = not debug.showFPS
 end, "Should collisions be drawn? - Arguments: [true/false]")
+
+console.addCommand("tp", function(args)
+    if args then
+        if #args == 2 then
+            player.x = args[1]
+            player.y = args[2]
+        end
+    end
+end, "Teleport the player to an x/y position - Arguments: [x, y]")
 
 function file_exists(name)
     local f=io.open(name,"r")

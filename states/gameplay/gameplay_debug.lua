@@ -21,7 +21,7 @@ end
 
 function debug.drawEvents()
     -- Debug draw evnts
-    if not debug.shouldDrawEvents then
+    if debug.shouldDrawEvents then
         local items, len = event_world:getItems()
 
         for _, item in pairs(items) do

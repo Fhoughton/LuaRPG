@@ -19,6 +19,8 @@ local objects = {}
 collision_world = bump.newWorld()
 event_world = bump.newWorld()
 
+player = {}
+
 function state_gameplay:enter()
     love.graphics.setBackgroundColor(0, 1, 0)
     camera = Camera(0, 0)
@@ -33,7 +35,8 @@ function loadMap(mapPath)
     collision_world = bump.newWorld()
     event_world = bump.newWorld()
 
-    table.insert(objects,Player(0, 0, camera))
+    player = Player(0, 0, camera)
+    table.insert(objects,player)
 
     map = sti(mapPath)
 
