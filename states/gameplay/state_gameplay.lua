@@ -26,7 +26,7 @@ function state_gameplay:enter()
     camera = Camera(0, 0)
     camera:zoom(2)
 
-    loadMap("map_object_test")
+    loadMap("map_collision_test")
 end
 
 function loadMap(mapPath)
@@ -38,7 +38,7 @@ function loadMap(mapPath)
     player = Player(0, 0, camera)
     table.insert(objects,player)
 
-    map = sti(mapPath)
+    map = sti(mapPath, {"bump"})
 
     -- Load Map Objects
     if map.layers["Objects"] ~= nil then
@@ -55,6 +55,8 @@ function loadMap(mapPath)
     else
         console.warning(("Map %s has no 'Objects' layer! Perhaps it's misnamed?"):format(mapPath))
     end
+
+    map:bump_init(collision_world)
 end
 
 function state_gameplay:update(dt)

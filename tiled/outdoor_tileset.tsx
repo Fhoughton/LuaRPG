@@ -8,4 +8,24 @@
    <property name="speedMultiplier" type="float" value="0.5"/>
   </properties>
  </tile>
+ <tile id="164">
+  <properties>
+   <property name="collidable" type="bool" value="true"/>
+  </properties>
+ </tile>
+ <tile id="165">
+  <properties>
+   <property name="collidable" type="bool" value="true"/>
+  </properties>
+ </tile>
+ <tile id="166">
+  <properties>
+   <property name="collidable" type="bool" value="true"/>
+  </properties>
+ </tile>
+ <tile id="167">
+  <properties>
+   <property name="collidable" type="bool" value="true"/>
+  </properties>
+ </tile>
 </tileset>
