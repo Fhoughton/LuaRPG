@@ -23,6 +23,12 @@ console.addCommand("tp", function(args)
     end
 end, "Teleport the player to an x/y position - Arguments: [x, y]")
 
+console.addCommand("exec", function(args)
+    if args then
+        assert(loadstring(args[1]))()
+    end
+end, "Runs some lua code after the point - Arguments: [code]")
+
 function file_exists(name)
     local f=io.open(name,"r")
     if f~=nil then io.close(f) return true else return false end
