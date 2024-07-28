@@ -1,7 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="30" height="20" tilewidth="32" tileheight="32" infinite="0" nextlayerid="2" nextobjectid="1">
+ <editorsettings>
+  <export target="../maps/map_collision_test.lua" format="lua"/>
+ </editorsettings>
  <tileset firstgid="1" name="outdoor_tileset" tilewidth="32" tileheight="32" tilecount="180" columns="20">
   <image source="../resources/tilesets/outdoor_tileset.png" width="640" height="288"/>
+  <tile id="68">
+   <objectgroup draworder="index" id="2">
+    <object id="1" x="0" y="0" width="32" height="32">
+     <ellipse/>
+    </object>
+   </objectgroup>
+  </tile>
   <tile id="164">
    <properties>
     <property name="collidable" type="bool" value="true"/>
@@ -29,7 +39,7 @@
 46,165,166,167,168,165,166,167,168,165,166,167,168,47,46,47,46,47,46,47,46,47,46,47,46,47,46,47,46,47,
 26,27,26,27,26,27,26,27,26,27,26,165,166,167,168,27,26,27,26,27,26,27,26,27,26,27,26,27,26,27,
 46,165,166,167,168,47,46,47,46,47,46,47,46,47,46,47,46,47,46,47,46,47,46,47,46,47,46,47,46,47,
-26,27,26,27,26,165,166,167,168,27,26,27,26,27,26,27,26,27,26,27,26,27,26,27,26,27,26,27,26,27,
+26,27,26,27,26,165,166,167,168,27,26,27,26,27,69,27,26,27,26,27,26,27,26,27,26,27,26,27,26,27,
 46,47,46,47,46,47,46,47,165,166,167,168,46,47,46,47,46,47,46,47,46,47,46,47,46,47,46,47,46,47,
 26,27,26,27,26,27,26,27,26,27,26,27,26,27,26,27,26,27,26,27,26,27,26,27,26,27,26,27,26,27,
 46,47,46,47,46,47,46,47,46,47,46,47,46,47,46,47,46,47,46,47,46,47,46,47,46,47,46,47,46,47,

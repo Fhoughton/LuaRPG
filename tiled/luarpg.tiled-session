@@ -3,7 +3,7 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "map_object_test.tmx",
+    "activeFile": "",
     "expandedProjectPaths": [
         "."
     ],
@@ -21,7 +21,8 @@
             }
         },
         "map_collision_test.tmx#outdoor_tileset": {
-            "scaleInEditor": 1
+            "scaleInDock": 1,
+            "scaleInEditor": 3
         },
         "map_object_test.tmx": {
             "scale": 2,
@@ -57,15 +58,14 @@
     "map.lastUsedExportFilter": "Lua files (*.lua)",
     "map.lastUsedFormat": "tmx",
     "openFiles": [
-        "map_object_test.tmx",
-        "outdoor_tileset.tsx"
+        "map_collision_test.tmx"
     ],
     "project": "luarpg.tiled-project",
     "property.type": "bool",
     "recentFiles": [
+        "map_collision_test.tmx",
         "map_object_test.tmx",
         "outdoor_tileset.tsx",
-        "map_collision_test.tmx",
         "map_test.tmx"
     ],
     "tileset.embedInMap": true,

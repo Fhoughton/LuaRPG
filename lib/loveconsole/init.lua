@@ -385,30 +385,30 @@ function console.draw()
 		love.graphics.setFont(consoleFont) -- Prepare the console font.
 
 		-- Draw the information widgets if the console is hidden and there are warnings and or errors.
-		if warningCount > 0 or errorCount > 0 then
-			local width = 6 * config.fontSize
-			local height = config.fontSize * 1.5
+		-- if warningCount > 0 or errorCount > 0 then
+		-- 	local width = 6 * config.fontSize
+		-- 	local height = config.fontSize * 1.5
 
-			-- Draw the box outline border.
-			love.graphics.setColor(config.colors["outline"].r, config.colors["outline"].g, config.colors["outline"].b, config.colors["outline"].a)
-			love.graphics.rectangle("fill", 0, 0, width + config.outlineSize * 2, height + config.outlineSize * 2)
+		-- 	-- Draw the box outline border.
+		-- 	love.graphics.setColor(config.colors["outline"].r, config.colors["outline"].g, config.colors["outline"].b, config.colors["outline"].a)
+		-- 	love.graphics.rectangle("fill", 0, 0, width + config.outlineSize * 2, height + config.outlineSize * 2)
 
-			-- Draw the box background.
-			love.graphics.setColor(config.colors["background"].r, config.colors["background"].g, config.colors["background"].b, config.colors["background"].a)
-			love.graphics.rectangle("fill", config.outlineSize, config.outlineSize, width, height)
+		-- 	-- Draw the box background.
+		-- 	love.graphics.setColor(config.colors["background"].r, config.colors["background"].g, config.colors["background"].b, config.colors["background"].a)
+		-- 	love.graphics.rectangle("fill", config.outlineSize, config.outlineSize, width, height)
 
-			-- Draw the warning count.
-			love.graphics.setColor(config.colors["warning"].r, config.colors["warning"].g, config.colors["warning"].b, config.colors["warning"].a)
-			love.graphics.printf(math.min(9999, warningCount), math.ceil(config.outlineSize - config.fontSize / 2), math.ceil(config.outlineSize + (config.fontSize / 6)), config.fontSize * 4, "center")
+		-- 	-- Draw the warning count.
+		-- 	love.graphics.setColor(config.colors["warning"].r, config.colors["warning"].g, config.colors["warning"].b, config.colors["warning"].a)
+		-- 	love.graphics.printf(math.min(9999, warningCount), math.ceil(config.outlineSize - config.fontSize / 2), math.ceil(config.outlineSize + (config.fontSize / 6)), config.fontSize * 4, "center")
 
-			-- Draw the error count.
-			love.graphics.setColor(config.colors["error"].r, config.colors["error"].g, config.colors["error"].b, config.colors["error"].a)
-			love.graphics.printf(math.min(9999, errorCount), math.ceil(config.outlineSize + config.fontSize * 2.5), math.ceil(config.outlineSize + (config.fontSize / 6)), config.fontSize * 4, "center")
+		-- 	-- Draw the error count.
+		-- 	love.graphics.setColor(config.colors["error"].r, config.colors["error"].g, config.colors["error"].b, config.colors["error"].a)
+		-- 	love.graphics.printf(math.min(9999, errorCount), math.ceil(config.outlineSize + config.fontSize * 2.5), math.ceil(config.outlineSize + (config.fontSize / 6)), config.fontSize * 4, "center")
 
-			-- Reset color.
-			love.graphics.setColor(255, 255, 255, 255)
-			love.graphics.setFont(baseFont)
-		end
+		-- 	-- Reset color.
+		-- 	love.graphics.setColor(255, 255, 255, 255)
+		-- 	love.graphics.setFont(baseFont)
+		-- end
 	end
 end
 
