@@ -10,13 +10,14 @@ function Player:new(x, y, camera)
     self.camera = camera
 
     collision_world:add(self, self.x, self.y, 16, 24)
-    event_world:add(self, self.x, self.y, 16, 24)
 
     self.collision_filter = function(item, other)
       if other.is ~= nil then
         if other:is(Bullet) then return 'cross'
         end
       end
+
+      return 'slide'
     end
 end
 
@@ -56,18 +57,9 @@ function Player:update(dt)
   self.x = actualX
   self.y = actualY
 
-  -- Make the event world hitbox track the collision one
-  event_world:update(self, actualX, actualY)
-
   -- Camera follows the player's new position
   local middle = self:getMiddle()
   camera:lookAt(middle.x, middle.y)
-
-  -- if len > 0 then
-  --   print(("Attempted to move to %d,%d, but ended up in %d,%d due to %d collisions"):format(newX, newY, actualX, actualY, len))
-  -- else
-  --   print("Moved to new position without collisions")
-  -- end
 end
 
 function Player:keypressed(key, scancode, isrepeat)

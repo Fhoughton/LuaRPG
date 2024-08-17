@@ -15,7 +15,6 @@ local scaling = require "scaling"
 objects = {}
 
 collision_world = bump.newWorld()
-event_world = bump.newWorld()
 
 player = {}
 
