@@ -37,6 +37,7 @@ end
 function debug.draw()
     debug.drawCollisions()
     debug.drawEvents()
+    love.graphics.setColor(1,1,1,1) -- Reset draw colour to white
 end
 
 function debug.drawGUI()

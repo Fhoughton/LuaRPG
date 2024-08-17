@@ -22,7 +22,7 @@ event_world = bump.newWorld()
 player = {}
 
 function state_gameplay:enter()
-    love.graphics.setBackgroundColor(0, 1, 0)
+    love.graphics.setBackgroundColor(0, 0, 0)
     camera = Camera(0, 0)
     camera:zoom(2)
 
@@ -74,7 +74,7 @@ function state_gameplay:draw()
     end
 
     love.graphics.setCanvas(camera_canvas)
-    love.graphics.clear(1, 1, 1, 0)
+    love.graphics.clear(0, 0, 1, 1) -- Game background colour
 
     for layerName, layerObject in pairs(map.layers) do
         map:drawLayer(layerObject)
@@ -85,7 +85,6 @@ function state_gameplay:draw()
     end
 
     debug.draw()
-    love.graphics.setColor(1,1,1,1)
 
     camera:detach()
 
@@ -101,7 +100,7 @@ function state_gameplay:draw()
     rs.pop()
 
     -- Draw rectangle to see game zone.
-    love.graphics.rectangle("line", rs.get_game_zone())
+    --love.graphics.rectangle("line", rs.get_game_zone())
 end
 
 function state_gameplay:drawGUI()
