@@ -1,4 +1,5 @@
 -- Wrapper for lib.loveconsole with our user commands
+local debug = require "gameplay_debug"
 local console = require "lib.loveconsole"
 
 console.addCommand("drawCollisions", function(args)
@@ -9,6 +10,9 @@ console.addCommand("drawEvents", function(args)
     debug.shouldDrawEvents = not debug.shouldDrawEvents
 end, "Should event debug info be drawn?")
 
+console.addCommand("drawGameZone", function(args)
+    debug.shouldDrawGameZone = not debug.shouldDrawGameZone -- Broken rn, likely because it's in GUI and not after where it used to be
+end, "Should game zone (screen boundaries for scaling) drawn?")
 
 console.addCommand("drawFPS", function(args)
     debug.showFPS = not debug.showFPS

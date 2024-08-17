@@ -19,6 +19,7 @@ local debug = {}
 debug.shouldDrawCollisions = false
 debug.shouldDrawEvents = false
 debug.showFPS = false
+debug.shouldDrawGameZone = false
 
 function debug.drawCollisions()
     -- Debug draw collisions
@@ -59,6 +60,10 @@ end
 function debug.drawGUI()
     if debug.showFPS then
         love.graphics.print(("FPS: %d"):format(love.timer.getFPS()), 0, 0)
+    end
+
+    if debug.shouldDrawGameZone then
+        love.graphics.rectangle("line", rs.get_game_zone())
     end
 end
 
