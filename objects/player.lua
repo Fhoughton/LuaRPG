@@ -1,11 +1,9 @@
 local peachy = require("lib.peachy")
 local debug = require "debug"
 
-local GameObject = require "states.gameplay.game_object"
+local GameObject = require "objects.game_object"
 
 local Player = GameObject:extend()
-
-inspect = require "lib.inspect"
 
 function Player:new(x, y, camera)
     self.image = peachy.new("resources/man.json", love.graphics.newImage("resources/man.png"), "WalkDown")

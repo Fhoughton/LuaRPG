@@ -1,14 +1,14 @@
 require "debug"
 
-GameObject = require "states.gameplay.game_object"
-Player = require "states.gameplay.player"
+GameObject = require "objects.game_object"
+Player = require "objects.player"
 Camera = require "lib.hump.camera"
 
 local sti = require "lib.sti"
 local bump = require "lib.bump"
-local console = require "states.gameplay.console"
+local console = require "console"
 
-debug = require "states.gameplay.gameplay_debug"
+local debug = require "gameplay_debug"
 
 rs = require "lib.resolution_solution"
 rs.conf({game_width = 640, game_height = 360, scale_mode = rs.ASPECT_MODE})
@@ -40,8 +40,6 @@ love.resize = function(w, h)
     rs.resize(w, h)
     console.resize(w, h)
 end
-
-local state_gameplay = require "states.gameplay.state_gameplay"
 
 function love.keypressed(key, scancode, isrepeat)
 	if key == "f11" then
