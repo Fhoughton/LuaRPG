@@ -1,19 +1,23 @@
 local peachy = require("lib.peachy")
-local debug = require "debug"
-
 local GameObject = require "objects.game_object"
-
+local Bullet = require "objects.bullet"
 local Player = GameObject:extend()
 
 function Player:new(x, y, camera)
+    Player.super.new(self, x, y)
     self.image = peachy.new("resources/man.json", love.graphics.newImage("resources/man.png"), "WalkDown")
-    self.x = x
-    self.y = y
     self.speed = 100
     self.camera = camera
 
     collision_world:add(self, self.x, self.y, 16, 24)
     event_world:add(self, self.x, self.y, 16, 24)
+
+    self.collision_filter = function(item, other)
+      if other.is ~= nil then
+        if other:is(Bullet) then return 'cross'
+        end
+      end
+    end
 end
 
 function Player:draw()
@@ -47,7 +51,7 @@ function Player:update(dt)
   local newY = self.y + deltaY
 
   -- Resolve collision
-  local actualX, actualY, cols, len = collision_world:move(self, newX, newY)
+  local actualX, actualY, cols, len = collision_world:move(self, newX, newY, self.collision_filter)
 
   self.x = actualX
   self.y = actualY
@@ -64,6 +68,14 @@ function Player:update(dt)
   -- else
   --   print("Moved to new position without collisions")
   -- end
+end
+
+function Player:keypressed(key, scancode, isrepeat)
+  if isrepeat == false then
+    if key == "space" then
+      table.insert(objects,Bullet(self.x, self.y))
+    end
+  end
 end
 
 return Player

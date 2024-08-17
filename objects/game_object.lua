@@ -15,6 +15,9 @@ function GameObject:draw()
     love.graphics.draw(self.image, self.x, self.y, 0, 1, 1)
 end
 
+function GameObject:keypressed(key, scancode, isrepeat)
+end
+
 -- Returns the x and y offset to find the middle of the object from the sprite
 function GameObject:getMiddle()
     return { ["x"] = self.x + (self.image:getWidth() / 2), ["y"] = self.y + (self.image:getHeight() / 2)}

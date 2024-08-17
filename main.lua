@@ -25,6 +25,10 @@ function love.keypressed(key, scancode, isrepeat)
 		love.window.setFullscreen(fullscreen, "exclusive")
 	end
 
+  for i, obj in ipairs(objects) do
+    obj:keypressed(key, scancode, isrepeat)
+  end
+
   console.keypressed(key)
 end
 
