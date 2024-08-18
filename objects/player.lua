@@ -76,7 +76,11 @@ function Player:keypressed(key, scancode, isrepeat)
     if key == "space" then
       table.insert(objects,Bullet(self.x, self.y))
     elseif key == "lshift" then
-      table.insert(objects,ParticleEmitter(self.x, self.y, 0.25, 0.25, 0))
+      if math.fmod(self.x, 2) == 0 then
+        table.insert(objects,ParticleEmitter("resources.particles.colorful", self.x, self.y, 0.25, 0.25, 0))
+      else
+        table.insert(objects,ParticleEmitter("resources.particles.FlameCandle", self.x, self.y, 0.25, 0.25, 0))
+      end
     end
   end
 end

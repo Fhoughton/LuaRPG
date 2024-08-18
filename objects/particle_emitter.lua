@@ -2,9 +2,11 @@ local GameObject = require "objects.game_object"
 
 local ParticleEmitter = GameObject:extend()
 
-local allParticleData = require("resources.particles.colorful")
 
-function ParticleEmitter:new(x, y, xscale, yscale, rotation)
+
+function ParticleEmitter:new(particleCode, x, y, xscale, yscale, rotation)
+	local allParticleData = require(particleCode)
+
     ParticleEmitter.super.new(self, x, y)
     self.xscale = xscale
     self.yscale = yscale
