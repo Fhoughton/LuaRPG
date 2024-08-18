@@ -1,6 +1,3 @@
-local peachy = require("lib.peachy")
-local debug = require "debug"
-
 local GameObject = require "objects.game_object"
 
 local Bullet = GameObject:extend()

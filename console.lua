@@ -1,6 +1,7 @@
 -- Wrapper for lib.loveconsole with our user commands
 local debug = require "gameplay_debug"
 local console = require "lib.loveconsole"
+local maps = require "maps"
 
 console.addCommand("drawCollisions", function(args)
     debug.shouldDrawCollisions = not debug.shouldDrawCollisions
@@ -40,7 +41,7 @@ function file_exists(name)
 
 console.addCommand("map", function(args)
     if args then
-        loadMap(args[1])
+        maps:loadMap(args[1])
     else
         console.print("MAP NAME AT SOME POINT")
     end

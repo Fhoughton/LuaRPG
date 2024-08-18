@@ -8,7 +8,6 @@ local bump = require "lib.bump"
 local console = require "console"
 local debug = require "gameplay_debug"
 local maps = require "maps"
-local scaling = require "scaling"
 
 rs = require "lib.resolution_solution"
 rs.conf({game_width = 640, game_height = 360, scale_mode = rs.ASPECT_MODE})

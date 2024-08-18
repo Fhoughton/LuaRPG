@@ -1,5 +1,4 @@
 local bump = require "lib.bump"
-local console = require "console"
 local sti = require "lib.sti"
 
 local maps = {}
@@ -27,7 +26,7 @@ function maps:load(mapPath)
         end
         map:removeLayer("Objects")
     else
-        console.warning(("Map %s has no 'Objects' layer! Perhaps it's misnamed?"):format(mapPath))
+        --console.warning(("Map %s has no 'Objects' layer! Perhaps it's misnamed?"):format(mapPath))
     end
   
     map:bump_init(collision_world)

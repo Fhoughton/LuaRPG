@@ -2,6 +2,7 @@ local peachy = require("lib.peachy")
 local GameObject = require "objects.game_object"
 local Bullet = require "objects.bullet"
 local Player = GameObject:extend()
+local ParticleEmitter = require "objects.particle_emitter"
 
 function Player:new(x, y, camera)
     Player.super.new(self, x, y)
@@ -27,10 +28,7 @@ function Player:draw()
     self.image:draw(self.x, self.y)
 end
 
-function Player:update(dt)
-  self.image:update(dt)
-  self.image:play()
-
+function Player:handle_movement(dt)
   local deltaX, deltaY = 0, 0
 
   if love.keyboard.isDown("left") then
@@ -48,6 +46,15 @@ function Player:update(dt)
   else
     self.image:pause()
   end
+
+  return deltaX, deltaY
+end
+
+function Player:update(dt)
+  self.image:update(dt)
+  self.image:play()
+
+  local deltaX, deltaY = self:handle_movement(dt)
 
   -- Calculate new position based on input
   local newX = self.x + deltaX
@@ -68,6 +75,8 @@ function Player:keypressed(key, scancode, isrepeat)
   if isrepeat == false then
     if key == "space" then
       table.insert(objects,Bullet(self.x, self.y))
+    elseif key == "lshift" then
+      table.insert(objects,ParticleEmitter(self.x, self.y, 0.25, 0.25, 0))
     end
   end
 end
