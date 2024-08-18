@@ -13,7 +13,9 @@ function Player:new(x, y, camera)
 
     self.collision_filter = function(item, other)
       if other.is ~= nil then
-        if other:is(Bullet) then return 'cross'
+        if other:is(Bullet) then
+          -- Can do updates here e.g. hp damage
+          return 'cross'
         end
       end
 

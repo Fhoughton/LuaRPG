@@ -10,6 +10,12 @@ local debug = require "gameplay_debug"
 local maps = require "maps"
 local scaling = require "scaling"
 
+rs = require "lib.resolution_solution"
+rs.conf({game_width = 640, game_height = 360, scale_mode = rs.ASPECT_MODE})
+rs.setMode(rs.game_width, rs.game_height, {resizable = true})
+
+camera_canvas = love.graphics.newCanvas(rs.game_width, rs.game_height)
+
 --local game_canvas = love.graphics.newCanvas(rs.get_game_size())
 
 objects = {}
@@ -17,6 +23,19 @@ objects = {}
 collision_world = bump.newWorld()
 
 player = {}
+
+rs.resize_callback = function()
+  if rs.scale_mode == rs.NO_SCALING_MODE then
+    camera_canvas = love.graphics.newCanvas(love.graphics.getWidth(), love.graphics.getHeight())
+  else
+    camera_canvas = love.graphics.newCanvas(rs.game_width, rs.game_height)
+  end
+end
+
+love.resize = function(w, h)
+  rs.resize(w, h)
+  console.resize(w, h)
+end
 
 function love.keypressed(key, scancode, isrepeat)
 	if key == "f11" then
@@ -83,5 +102,10 @@ function love.draw()
   debug.drawGUI()
   
   -- Draw Screen (scaled) --
-  scaling:drawScreenSpace()
+  love.graphics.setCanvas()    
+
+  rs.push()
+      -- Draw camera's canvas.
+      love.graphics.draw(camera_canvas)
+  rs.pop()
 end
